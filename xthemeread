@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Nikolay Andriychuk <nikonik@chiita.ru>
+#
+echo "[Desktop Entry]" > $HOME/.config/index.theme
+echo "Encoding=UTF-8" >> $HOME/.config/index.theme
+echo "Name="`xfconf-query -c xsettings -p /Net/ThemeName -v`"" >> $HOME/.config/index.theme
+
+echo "Type=X-GNOME-Metatheme" >> $HOME/.config/index.theme
+echo "Comment="`xfconf-query -c xsettings -p /Net/ThemeName -v`"" >> $HOME/.config/index.theme
+	
+echo "">> $HOME/.config/index.theme
+        echo "[X-GNOME-Metatheme]" >> $HOME/.config/index.theme
+	echo "ColorPalette="`xfconf-query -c xsettings -p /Gtk/ColorPalette -v`"" >> $HOME/.config/index.theme	
+	echo "GtkTheme="`xfconf-query -c xsettings -p /Net/ThemeName -v`"" >> $HOME/.config/index.theme
+	echo "MetacityTheme="`gsettings get org.gnome.metacity theme`"" >> $HOME/.config/index.theme
+	echo "Xfwm4Theme="`xfconf-query -c xfwm4 -p /general/theme -v`"" >> $HOME/.config/index.theme
+        echo "IconTheme="`xfconf-query -c xsettings -p /Net/IconThemeName -v`"" >> $HOME/.config/index.theme
+	echo "CursorTheme="`xfconf-query -c xsettings -p /Gtk/CursorThemeName -v`"" >> $HOME/.config/index.theme
+
+	echo "PanelTheme="`xfconf-query -c xfce4-panel -p /panels/panel-1/background-image -v`" "`xfconf-query -c xfce4-panel -p /panels/panel-0/background-image -v`"" >> $HOME/.config/index.theme
+	echo "BackgroundImage="`xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -v`"" >> $HOME/.config/index.theme
+
+	echo "GtkButtonLayout="`gsettings get org.gnome.desktop.wm.preferences button-layout`"" >> $HOME/.config/index.theme
+	echo "ButtonLayout="`xfconf-query -c xsettings -p /Gtk/DecorationLayout -v`"" >> $HOME/.config/index.theme
+sleep 1
+/opt/stork/XthemeGGXM.sh
+exit 1
